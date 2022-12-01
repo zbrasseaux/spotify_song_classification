@@ -1,0 +1,9 @@
+---
+title: "Spotify Song Clustering"
+output: html_notebook
+---
+
+
+```{r}
+song_dataset <- read.csv("spotify_millsongdata.csv")[c('artist', 'text')]
+```
