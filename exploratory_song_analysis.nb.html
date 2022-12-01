@@ -1752,14 +1752,31 @@ display: none;
 
 
 <!-- rnb-text-begin -->
+<p>This project will focus on classification of songs by artists. The
+goal is to utilize both supervised and unsupervised methods.</p>
+<p>To begin, we shall define some terms. By NLP standards, the lyrics of
+a song will be referred to as <code>document</code>, the set of all song
+lyrics will be referred to as the <code>corpus</code>. The artist name
+will act as the <code>label</code> for the purpose of this project.</p>
+<p>As far as limitations go, to begin with, these methods would be
+better suited for classifying by genre, however those labels are not
+available at the time.</p>
+<p>We begin by reading in our dataset and selecting the
+<code>artist</code> and <code>text</code> columns as those are the
+<code>label</code> and <code>corpus</code> sets, respectively.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc29uZ19kYXRhc2V0IDwtIHJlYWQuY3N2KFwic3BvdGlmeV9taWxsc29uZ2RhdGEuY3N2XCIpW2MoJ2FydGlzdCcsICd0ZXh0JyldXG5gYGAifQ== -->
 <pre class="r"><code>song_dataset &lt;- read.csv(&quot;spotify_millsongdata.csv&quot;)[c(&#39;artist&#39;, &#39;text&#39;)]</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The first step is to perform some form of word embedding. We will
+attempt two different methods, <code>bag of words</code> and
+<code>tf-idf</code>.</p>
+<!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiU3BvdGlmeSBTb25nIENsdXN0ZXJpbmciCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCgpgYGB7cn0Kc29uZ19kYXRhc2V0IDwtIHJlYWQuY3N2KCJzcG90aWZ5X21pbGxzb25nZGF0YS5jc3YiKVtjKCdhcnRpc3QnLCAndGV4dCcpXQpgYGA=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiU3BvdGlmeSBTb25nIENsdXN0ZXJpbmciCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KClRoaXMgcHJvamVjdCB3aWxsIGZvY3VzIG9uIGNsYXNzaWZpY2F0aW9uIG9mIHNvbmdzIGJ5IGFydGlzdHMuIFRoZSBnb2FsIGlzIHRvIAp1dGlsaXplIGJvdGggc3VwZXJ2aXNlZCBhbmQgdW5zdXBlcnZpc2VkIG1ldGhvZHMuCgpUbyBiZWdpbiwgd2Ugc2hhbGwgZGVmaW5lIHNvbWUgdGVybXMuIEJ5IE5MUCBzdGFuZGFyZHMsIHRoZSBseXJpY3Mgb2YgYSBzb25nIAp3aWxsIGJlIHJlZmVycmVkIHRvIGFzIGBkb2N1bWVudGAsIHRoZSBzZXQgb2YgYWxsIHNvbmcgbHlyaWNzIHdpbGwgYmUgcmVmZXJyZWQgCnRvIGFzIHRoZSBgY29ycHVzYC4gVGhlIGFydGlzdCBuYW1lIHdpbGwgYWN0IGFzIHRoZSBgbGFiZWxgIGZvciB0aGUgcHVycG9zZSBvZiAKdGhpcyBwcm9qZWN0LgoKQXMgZmFyIGFzIGxpbWl0YXRpb25zIGdvLCB0byBiZWdpbiB3aXRoLCB0aGVzZSBtZXRob2RzIHdvdWxkIGJlIGJldHRlciBzdWl0ZWQKZm9yIGNsYXNzaWZ5aW5nIGJ5IGdlbnJlLCBob3dldmVyIHRob3NlIGxhYmVscyBhcmUgbm90IGF2YWlsYWJsZSBhdCB0aGUgdGltZS4KCldlIGJlZ2luIGJ5IHJlYWRpbmcgaW4gb3VyIGRhdGFzZXQgYW5kIHNlbGVjdGluZyB0aGUgYGFydGlzdGAgYW5kIGB0ZXh0YCBjb2x1bW5zCmFzIHRob3NlIGFyZSB0aGUgYGxhYmVsYCBhbmQgYGNvcnB1c2Agc2V0cywgcmVzcGVjdGl2ZWx5LgoKYGBge3J9CnNvbmdfZGF0YXNldCA8LSByZWFkLmNzdigic3BvdGlmeV9taWxsc29uZ2RhdGEuY3N2IilbYygnYXJ0aXN0JywgJ3RleHQnKV0KYGBgCgpUaGUgZmlyc3Qgc3RlcCBpcyB0byBwZXJmb3JtIHNvbWUgZm9ybSBvZiB3b3JkIGVtYmVkZGluZy4gV2Ugd2lsbCBhdHRlbXB0IHR3bwpkaWZmZXJlbnQgbWV0aG9kcywgYGJhZyBvZiB3b3Jkc2AgYW5kIGB0Zi1pZGZgLg==</div>
 
 
 

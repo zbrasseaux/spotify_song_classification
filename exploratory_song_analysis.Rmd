@@ -3,7 +3,23 @@ title: "Spotify Song Clustering"
 output: html_notebook
 ---
 
+This project will focus on classification of songs by artists. The goal is to 
+utilize both supervised and unsupervised methods.
+
+To begin, we shall define some terms. By NLP standards, the lyrics of a song 
+will be referred to as `document`, the set of all song lyrics will be referred 
+to as the `corpus`. The artist name will act as the `label` for the purpose of 
+this project.
+
+As far as limitations go, to begin with, these methods would be better suited
+for classifying by genre, however those labels are not available at the time.
+
+We begin by reading in our dataset and selecting the `artist` and `text` columns
+as those are the `label` and `corpus` sets, respectively.
 
 ```{r}
 song_dataset <- read.csv("spotify_millsongdata.csv")[c('artist', 'text')]
 ```
+
+The first step is to perform some form of word embedding. We will attempt two
+different methods, `bag of words` and `tf-idf`.
